@@ -11,6 +11,7 @@ import {
 import {
   DownloadProgressType,
   FileDownload,
+  FileExtract,
   FileName,
   FileValidate,
 } from '../features/fileManager';
@@ -40,7 +41,7 @@ export const compareFileRecursion =
     ] = [[] as CacheType[], 0, 0, 0, 0, 0];
 
     for await (const cache of caches) {
-      const { path, bytes, name, gpu: gpuCache } = cache;
+      const { path, bytes, name, gpu: gpuCache, zip } = cache;
       const bytesValid = bytes.length > 1 ? bytes[modeType] : bytes[0];
 
       const isValidCache = await FileValidate.isValidCache({
@@ -50,6 +51,7 @@ export const compareFileRecursion =
         name,
         bytes: bytesValid,
         filesContinue,
+        zip,
       });
 
       if (isValidCache === 'success') {
@@ -105,7 +107,7 @@ export const fetchStartDownload = (): AppThunk => async (dispatch, state) => {
   );
 
   for await (const cache of needDownload) {
-    const { id, path: toFile, name: toName, bytes, url: driveUrl } = cache;
+    const { id, path: toFile, name: toName, bytes, url: driveUrl, zip } = cache;
     const bytesValid = bytes.length > 1 ? bytes[modeType] : bytes[0];
     const urlValid =
       bytes.length > 1 && modeType > 0 ? cdnCache + '_snow' : cdnCache;
@@ -144,6 +146,25 @@ export const fetchStartDownload = (): AppThunk => async (dispatch, state) => {
       });
 
       if (res.statusCode === 200) {
+        if (zip) {
+          dispatch(
+            onUploadTaskEventLoader({
+              status: 'download',
+              sizeFile: numberOfDownloads,
+              currentFile: rejectCount,
+              size: numberOfDownloads,
+              current: rejectCount,
+              file: `Extraction de ${toName}...`,
+            }),
+          );
+
+          await FileExtract.extractAndCleanup({
+            path: toFile,
+            name: toName,
+            bytes: bytesValid,
+          });
+        }
+
         numberOfDownloads++;
         downloadBytes += bytesValid;
 

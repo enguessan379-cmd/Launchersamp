@@ -51,6 +51,10 @@ export type CacheType = {
   // Optional full direct URL for this file (e.g. Google Drive).
   // When set, it overrides the cdnCache + path + name concatenation.
   url?: string;
+  // When true, this entry is a .zip archive that must be extracted into
+  // `path` after download, then removed. Validity is tracked via a marker
+  // file instead of the (deleted) archive's byte size.
+  zip?: boolean;
 };
 
 export type LauncherType = {

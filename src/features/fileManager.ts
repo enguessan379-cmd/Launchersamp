@@ -1,5 +1,6 @@
 import { PACKAGE_NAME } from '@env';
 import RNFS, { moveFile } from 'react-native-fs';
+import { unzip } from 'react-native-zip-archive';
 
 export const FileDownload = {
   download: async (props: DownloadFileType) => {
@@ -29,6 +30,15 @@ export const FilePath = {
 
   getPathDirSetting: () => {
     return `/storage/emulated/0/Android/data/${PACKAGE_NAME}/files/SAMP/settings.ini`;
+  },
+
+  // Marker file written after a zip cache entry has been successfully
+  // extracted. Its content is the expected byte size from the manifest, so
+  // bumping that value in distribution.json forces a re-download + re-extract.
+  getMarkerPath: (path: string, name: string) => {
+    const toPatch = FilePath.getPathDirCache();
+    const dir = path ? `${toPatch}/${path}` : toPatch;
+    return `${dir}/.installed_${name}`;
   },
 
   generatePathCache: (path: string): string[] => {
@@ -66,6 +76,29 @@ export const FilePath = {
   },
 };
 
+export const FileExtract = {
+  // Extracts the downloaded archive at `path/name` into `path` (relative to
+  // the cache root), then deletes the archive and writes a marker file so
+  // isValidCache can recognize the install as complete next time.
+  extractAndCleanup: async ({
+    path,
+    name,
+    bytes,
+  }: {
+    path: string;
+    name: string;
+    bytes: number;
+  }) => {
+    const toPatch = FilePath.getPathDirCache();
+    const zipPath = `${toPatch}/${path}/${name}`;
+    const destDir = path ? `${toPatch}/${path}` : toPatch;
+
+    await unzip(zipPath, destDir);
+    await RNFS.unlink(zipPath);
+    await RNFS.writeFile(FilePath.getMarkerPath(path, name), `${bytes}`, 'utf8');
+  },
+};
+
 export const FileValidate = {
   isValidFileHash: async (localFile: string, validHash: string) => {
     const fileExists = await RNFS.exists(localFile);
@@ -84,12 +117,29 @@ export const FileValidate = {
     name,
     bytes,
     filesContinue,
+    zip,
   }: IsValidCacheType) => {
     if (
       gpuCache.length > 0 &&
       gpuCache.split('').some(element => element[0] === gpuSystem[0]) === false
     ) {
       return 'continue';
+    }
+
+    if (zip) {
+      try {
+        const markerContent = await RNFS.readFile(
+          FilePath.getMarkerPath(path, name),
+          'utf8',
+        );
+        if (Number(markerContent) === bytes) {
+          return 'success';
+        }
+      } catch (e) {
+        return 'download';
+      }
+
+      return 'download';
     }
 
     try {
@@ -222,6 +272,7 @@ type IsValidCacheType = {
   name: string;
   bytes: number;
   filesContinue: string[];
+  zip?: boolean;
 };
 
 export type DownloadProgressType = {
