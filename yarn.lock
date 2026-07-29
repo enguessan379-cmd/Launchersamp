@@ -7303,7 +7303,7 @@ react-native-gesture-handler@^2.8.0:
 
 "react-native-gpu-info@https://github.com/vasyok28/react-native-gpu-info":
   version "1.0.1"
-  resolved "git+ssh://git@github.com/vasyok28/react-native-gpu-info.git#b0fcd5514e076514bc937ee3315bcdbfda841b47"
+  resolved "git+https://github.com/vasyok28/react-native-gpu-info.git#b0fcd5514e076514bc937ee3315bcdbfda841b47"
 
 react-native-gradle-plugin@^0.70.3:
   version "0.70.3"
