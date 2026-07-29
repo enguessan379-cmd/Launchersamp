@@ -1,0 +1,93 @@
+Starting a Gradle Daemon, 9 busy Daemons could not be reused, use --status for details
+Starting a Gradle Daemon, 9 busy Daemons could not be reused, use --status for details
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:62)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.internal.DisconnectableInputStream$1.run(DisconnectableInputStream.java:127)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.base/java.io.FileInputStream.readBytes(Native Method)
+	at java.base/java.io.FileInputStream.read(FileInputStream.java:276)
+	at java.base/java.io.BufferedInputStream.read1(BufferedInputStream.java:282)
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:343)
+	at org.gradle.util.internal.DisconnectableInputStream$1.run(DisconnectableInputStream.java:98)
+	... 1 more
+> Task :react-native-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :react-native-gradle-plugin:compileJava NO-SOURCE
+> Task :react-native-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :react-native-gradle-plugin:processResources UP-TO-DATE
+> Task :react-native-gradle-plugin:classes UP-TO-DATE
+> Task :react-native-gradle-plugin:inspectClassesForKotlinIC UP-TO-DATE
+> Task :react-native-gradle-plugin:jar UP-TO-DATE
+
+> Configure project :app
+WARNING:The option setting 'android.aapt2FromMavenOverride=/data/data/com.termux/files/usr/bin/aapt2' is experimental.
+
+> Configure project :notifee_react-native
+:notifee_react-native @notifee/react-native found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@notifee/react-native
+:notifee_react-native package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@notifee/react-native/package.json
+:notifee_react-native:version set from package.json: 7.2.0 (7,2,0 - 7002000)
+:notifee_react-native:android.compileSdk using custom value: 33
+:notifee_react-native:android.targetSdk using custom value: 28
+:notifee_react-native:android.minSdk using custom value: 21
+:notifee_react-native:reactNativeAndroidDir /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/react-native/android
+
+> Configure project :react-native-firebase_app
+:react-native-firebase_app package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@react-native-firebase/app/package.json
+:react-native-firebase_app:firebase.bom using default value: 30.5.0
+:react-native-firebase_app:play.play-services-auth using default value: 20.3.0
+:react-native-firebase_app package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@react-native-firebase/app/package.json
+:react-native-firebase_app:version set from package.json: 15.7.0 (15,7,0 - 15007000)
+:react-native-firebase_app:android.compileSdk using custom value: 33
+:react-native-firebase_app:android.targetSdk using custom value: 28
+:react-native-firebase_app:android.minSdk using custom value: 21
+:react-native-firebase_app:reactNativeAndroidDir /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/react-native/android
+
+> Configure project :react-native-firebase_crashlytics
+:react-native-firebase_crashlytics package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@react-native-firebase/crashlytics/package.json
+:react-native-firebase_app package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@react-native-firebase/app/package.json
+:react-native-firebase_crashlytics:firebase.bom using default value: 30.5.0
+:react-native-firebase_crashlytics package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@react-native-firebase/crashlytics/package.json
+:react-native-firebase_crashlytics:version set from package.json: 15.7.0 (15,7,0 - 15007000)
+:react-native-firebase_crashlytics:android.compileSdk using custom value: 33
+:react-native-firebase_crashlytics:android.targetSdk using custom value: 28
+:react-native-firebase_crashlytics:android.minSdk using custom value: 21
+:react-native-firebase_crashlytics:reactNativeAndroidDir /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/react-native/android
+
+> Configure project :react-native-firebase_messaging
+:react-native-firebase_messaging package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@react-native-firebase/messaging/package.json
+:react-native-firebase_app package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@react-native-firebase/app/package.json
+:react-native-firebase_messaging:firebase.bom using default value: 30.5.0
+:react-native-firebase_messaging package.json found at /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/@react-native-firebase/messaging/package.json
+:react-native-firebase_messaging:version set from package.json: 15.7.0 (15,7,0 - 15007000)
+:react-native-firebase_messaging:android.compileSdk using custom value: 33
+:react-native-firebase_messaging:android.targetSdk using custom value: 28
+:react-native-firebase_messaging:android.minSdk using custom value: 21
+:react-native-firebase_messaging:reactNativeAndroidDir /data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/react-native/android
+
+> Configure project :react-native-reanimated
+AAR for react-native-reanimated has been found
+/data/data/com.termux/files/home/SAMP-Mobile-Launcher-RN-main/SAMP-Mobile-Launcher-RN-main/node_modules/react-native-reanimated/android/react-native-reanimated-70-jsc.aar
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Problem configuring task :app:assembleRelease from command line.
+> Unknown command-line option '--no-'.
+
+* Try:
+> Run gradlew help --task :app:assembleRelease to get task usage details.
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.6.4/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD FAILED in 1h 42m 25s
+5 actionable tasks: 5 up-to-date
