@@ -1,0 +1,32 @@
+{
+  "cdnLauncher": "https://www.mediafire.com/file/m96xgkgh8xcmcf4/AFRO_ROLEPLAY.zip/file",
+  "cdnCache": "https://www.mediafire.com/file/m96xgkgh8xcmcf4/AFRO_ROLEPLAY.zip/file",
+  "cacheMode": [],
+  "rss": "",
+  "versionHash": "1",
+  "packageName": "com.afrorp.mobile",
+  "projectName": "AFRO RP",
+  "servers": [
+    {
+      "id": 1,
+      "show": true,
+      "version": "1",
+      "icon": "",
+      "events": [],
+      "slot": 200,
+      "bonus": false,
+      "name": "AFRO RP",
+      "description": "Serveur RP francophone",
+      "address": "51.83.49.125:31950",
+      "sampVersion": "0.3.7"
+    }
+  ],
+  "launcher": {
+    "appVersion": "0.0.1",
+    "name": "AFRO RP Launcher",
+    "hash": "",
+    "bytes": 0,
+    "size": ""
+  },
+  "filesContinue": []
+}
