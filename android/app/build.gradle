@@ -132,6 +132,7 @@ def reactNativeArchitectures() {
 }
 
 android {
+    namespace "com.touch.mobile.dark"
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
